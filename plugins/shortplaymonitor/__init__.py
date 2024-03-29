@@ -1,6 +1,7 @@
 import os
 import threading
 import datetime
+import traceback
 from pathlib import Path
 
 from typing import Any, List, Dict, Tuple, Optional
@@ -426,6 +427,7 @@ class ShortPlayMonitor(_PluginBase):
                         logger.error(f"文件 {event_path} 硬链接失败，错误码：{retcode}")
         except Exception as e:
             logger.error(f"event_handler_created error: {e}")
+            logger.error(traceback.format_exc())
             print(str(e))
 
     @staticmethod
